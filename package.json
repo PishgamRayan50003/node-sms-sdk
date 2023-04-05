@@ -1,0 +1,11 @@
+{
+  "name": "@pishgamrayan/api",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.3"
+  }
+}
