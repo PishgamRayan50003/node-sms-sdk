@@ -1,4 +1,4 @@
-export enum VoiceStatus {
+export const enum VoiceStatus {
   AwaitingConfirmation,
   Accepted,
   Failed,

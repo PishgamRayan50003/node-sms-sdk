@@ -1,4 +1,4 @@
-export enum VoiceAuthorizationErrors {
+export const enum VoiceAuthorizationErrors {
   WithoutError = 0,
   InvalidUserNameOrPassword = -1,
   Forbidden = -10,

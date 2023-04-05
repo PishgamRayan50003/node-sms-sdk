@@ -1,4 +1,4 @@
-export enum DeliveryStatus {
+export const enum DeliveryStatus {
   SentToItc = 3,
   ReceivedByItc = 4,
   BlackList = 14,

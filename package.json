@@ -2,11 +2,14 @@
   "name": "@pishgamrayan/api",
   "version": "0.0.1",
   "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc --watch"
+    "build": "tsc --declaration",
+    "build:watch": "tsc --declaration --watch"
   },
   "devDependencies": {
+    "@types/node": "^18.15.11",
     "typescript": "^5.0.3"
   }
 }

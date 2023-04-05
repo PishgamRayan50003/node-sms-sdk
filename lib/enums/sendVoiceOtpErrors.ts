@@ -1,4 +1,4 @@
-export enum SendVoiceOtpErrors {
+export const enum SendVoiceOtpErrors {
   WithoutError = 0,
   InvalidCellPhone = -2,
   NotEnoughBalance = -3,
