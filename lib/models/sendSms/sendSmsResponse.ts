@@ -4,13 +4,13 @@ export interface SendSmsResponse {
   /**
    * شناسه صف یا صندوق
    */
-  MessageId: number;
+  ئessageId?: number;
   /**
    * وضعیت ارسال
    */
-  StatusCode: ApiStatusCode;
+  statusCode: ApiStatusCode;
   /**
    * تعداد بلک لیست
    */
-  BlackListCount: number;
+  blackListCount?: number;
 }

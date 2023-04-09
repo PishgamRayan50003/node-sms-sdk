@@ -2,17 +2,17 @@ export interface SendSmsRequest {
   /**
    * توکن تایید شده
    */
-  Token: string;
+  token: string;
   /**
    * شماره فرستنده
    */
-  SenderNumber: string;
+  senderNumber: string;
   /**
    * متن های پیامک، اگر یکی بود به همه شماره ها بده اگر مساوی بود نظیر به نظیر
    */
-  MessageBodies: string[];
+  messageBodies: string[];
   /**
    * لیست شماره ها
    */
-  RecipientNumbers: string[];
+  recipientNumbers: string[];
 }
