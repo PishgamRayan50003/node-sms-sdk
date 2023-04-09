@@ -4,9 +4,9 @@ export interface GetCreditResponse {
   /**
    * کد وضعیت
    */
-  StatusCode: ApiStatusCode;
+  statusCode: ApiStatusCode;
   /**
    * اعتبار
    */
-  Credit: number;
+  credit?: number;
 }
