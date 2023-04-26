@@ -2,18 +2,18 @@ export interface SendVoiceOtpRequest {
   /**
    * توکن تایید شده
    */
-  Token: string;
+  token: string;
   /**
    * شماره فرستنده
    */
-  SenderNumber: string;
+  senderNumber: string;
   /**
    * شماره همراه یا ثابت
    */
-  Number: string;
+  number: string;
   /**
    * کد دلخواه خود را وارد نمایید
    * حداقل 4 و حداکثر 8 رقم
    */
-  OptionalCode?: number;
+  optionalCode?: number;
 }

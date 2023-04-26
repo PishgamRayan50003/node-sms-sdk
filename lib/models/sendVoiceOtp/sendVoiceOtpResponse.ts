@@ -8,21 +8,21 @@ export interface SendVoiceOtpResponse {
   /**
    * وضعیت ارسال
    */
-  StatusCode: ApiStatusCode;
+  statusCode: ApiStatusCode;
   /**
    * کد ارسال سریع میباشد
    */
-  QuickSendId: number;
+  quickSendId?: number;
   /**
    * کد تولید شده میباشد
    */
-  GeneratedCode: string;
+  generatedCode?: string;
   /**
    * کد خطاها
    */
-  SendVoiceOtpErrors?: SendVoiceOtpErrors;
+  sendVoiceOtpErrors?: SendVoiceOtpErrors;
   /**
    * کد خطاهای احراز
    */
-  SendVoiceOtpAuthorizationErrors?: VoiceAuthorizationErrors;
+  sendVoiceOtpAuthorizationErrors?: VoiceAuthorizationErrors;
 }

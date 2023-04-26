@@ -8,6 +8,8 @@ import {
   GetDeliveryResponse,
   GetMessageRequest,
   GetMessageResponse,
+  SendVoiceOtpRequest,
+  SendVoiceOtpResponse,
 } from "./models";
 
 export class Pishgam {
@@ -104,4 +106,26 @@ export class Pishgam {
     if ((await request.text()) != null) return await request.json();
     return { statusCode: ApiStatusCode.Failed };
   }
+
+  public static async sendVoiceOtpAsync(
+    {token , ...sendVoiceOtpRequest}: SendVoiceOtpRequest,
+    controller?: AbortController
+  ):Promise<SendVoiceOtpResponse> {
+    const body = sendVoiceOtpRequest;
+    const request = await fetch(`${this.apiAddress}Messages/GetDelivery`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+      body: JSON.stringify(body),
+      signal: controller?.signal,
+    });
+
+    if ((await request.text()) != null) return await request.json();
+    return { statusCode: ApiStatusCode.Failed };
+
+  }
+
+
 }
