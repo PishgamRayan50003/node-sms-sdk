@@ -6,6 +6,8 @@ import {
   GetCreditResponse,
   GetDeliveryRequest,
   GetDeliveryResponse,
+  GetMessageRequest,
+  GetMessageResponse,
 } from "./models";
 
 export class Pishgam {
@@ -57,14 +59,38 @@ export class Pishgam {
 
   /**
    * این متد در پاسخ  آرایه ای از وضعیت دریافت ها را به ترتیب شماره ها در آرایه ی گیرندگان داده شده نمایش می دهد.
-   * @param {GetDeliveryRequest} GetDeliveryRequest 
-   * @param {AbortController} controller 
+   * @param {GetDeliveryRequest} GetDeliveryRequest
+   * @param {AbortController} controller
    */
   public static async getDeliveryAsync(
     { token, ...getDeliveryRequest }: GetDeliveryRequest,
     controller?: AbortController
   ): Promise<GetDeliveryResponse> {
     const body = getDeliveryRequest;
+    const request = await fetch(`${this.apiAddress}Messages/GetDelivery`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+      body: JSON.stringify(body),
+      signal: controller?.signal,
+    });
+
+    if ((await request.text()) != null) return await request.json();
+    return { statusCode: ApiStatusCode.Failed };
+  }
+
+  /**
+   * این متد مربوط به دریافت پیام می باشد و حداکثر 100 پیام بر می گردد و بازه شروع و پایان را باید به صورت شمسی وارد نمایید.
+   * @param {GetMessageRequest} GetMessageRequest
+   * @param {AbortController} controller
+   */
+  public static async getMessageAsync(
+    { token, ...getMessageRequest }: GetMessageRequest,
+    controller?: AbortController
+  ): Promise<GetMessageResponse> {
+    const body = getMessageRequest;
     const request = await fetch(`${this.apiAddress}Messages/GetDelivery`, {
       method: "POST",
       headers: {
