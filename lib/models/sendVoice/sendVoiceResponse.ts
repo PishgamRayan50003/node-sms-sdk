@@ -4,9 +4,9 @@ export interface SendVoiceResponse {
   /**
    * شناسه صف یا صندوق
    */
-  MessageId: number;
+  messageId?: number;
   /**
    * وضعیت ارسال
    */
-  StatusCode: ApiStatusCode;
+  statusCode: ApiStatusCode;
 }

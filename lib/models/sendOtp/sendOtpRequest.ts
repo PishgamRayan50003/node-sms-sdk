@@ -2,21 +2,21 @@ export interface SendOtpRequest {
   /**
    * توکن تایید شده
    */
-  Token: string;
+  token: string;
   /**
    * شناسه قالب پیامک احرازهویت
    */
-  OtpId: number;
+  otpId: number;
   /**
    * پارامترهای قالب پیامک احرازهویت
    */
-  Parameters: object[];
+  parameters: object[];
   /**
    * شماره فرستنده
    */
-  SenderNumber: string;
+  senderNumber: string;
   /**
    * لیست شماره ها
    */
-  RecipientNumbers: string[];
+  recipientNumbers: string[];
 }

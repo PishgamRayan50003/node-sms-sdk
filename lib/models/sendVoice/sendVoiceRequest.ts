@@ -2,25 +2,25 @@ export interface SendVoiceRequest {
   /**
    * توکن تایید شده
    */
-  Token: string;
+  token: string;
   /**
    * شماره فرستنده
    */
-  SenderNumber: string;
+  senderNumber: string;
   /**
    * لیست شماره ها
    */
-  RecipientNumbers: string[];
+  recipientNumbers: string[];
   /**
    * شناسه صوت
    */
-  VoiceMessageId: number;
+  voiceMessageId: number;
   /**
    * چند بار پیام ارسال بشه در صورت موفق نبودن
    */
-  MaxTryCount: number;
+  maxTryCount: number;
   /**
    * چند دقیقه زنگ را بزنه
    */
-  MinuteBetweenTries: number;
+  minuteBetweenTries: number;
 }

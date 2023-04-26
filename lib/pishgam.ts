@@ -14,6 +14,9 @@ import {
   UploadVoiceMessageResponse,
   GetVoiceStatusRequest,
   GetVoiceStatusResponse,
+  SendVoiceRequest,
+  SendVoiceResponse,
+  SendOtpRequest,
 } from "./models";
 
 export class Pishgam {
@@ -170,12 +173,60 @@ export class Pishgam {
    * @param {GetUploadStatusRequest} GetUploadStatusRequest
    * @param {AbortController} controller
    */
-  public static async getVoiceStatus(
+  public static async getVoiceStatusAsync(
     { token, ...getVoiceStatusRequest }: GetVoiceStatusRequest,
     controller?: AbortController
   ): Promise<GetVoiceStatusResponse> {
     const body = getVoiceStatusRequest;
     const request = await fetch(`${this.apiAddress}Messages/GetVoiceStatus`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+      body: JSON.stringify(body),
+      signal: controller?.signal,
+    });
+
+    if ((await request.text()) != null) return await request.json();
+    return { statusCode: ApiStatusCode.Failed };
+  }
+
+  /**
+   * ارسال پیامک صوتی
+   * @param {SendVoiceRequest} SendVoiceRequest
+   * @param {AbortController} controller
+   */
+  public static async sendVoiceAsync(
+    { token, ...sendVoiceRequest }: SendVoiceRequest,
+    controller?: AbortController
+  ): Promise<SendVoiceResponse> {
+    const body = sendVoiceRequest;
+    const request = await fetch(`${this.apiAddress}Messages/SendVoice`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+      body: JSON.stringify(body),
+      signal: controller?.signal,
+    });
+
+    if ((await request.text()) != null) return await request.json();
+    return { statusCode: ApiStatusCode.Failed };
+  }
+
+  /**
+   * ارسال پیامک احرازهویت
+   * @param {SendOtpRequest} SendOtpRequest
+   * @param {AbortController} controller
+   */
+  public static async sendOtpAsync(
+    { token, ...sendOtpRequest }: SendOtpRequest,
+    controller?: AbortController
+  ): Promise<SendSmsResponse> {
+    const body = sendOtpRequest;
+    const request = await fetch(`${this.apiAddress}Messages/SendVoice`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
