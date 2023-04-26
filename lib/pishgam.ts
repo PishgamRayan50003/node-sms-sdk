@@ -10,6 +10,8 @@ import {
   GetMessageResponse,
   SendVoiceOtpRequest,
   SendVoiceOtpResponse,
+  UploadVoiceMessageRequest,
+  UploadVoiceMessageResponse,
 } from "./models";
 
 export class Pishgam {
@@ -93,7 +95,7 @@ export class Pishgam {
     controller?: AbortController
   ): Promise<GetMessageResponse> {
     const body = getMessageRequest;
-    const request = await fetch(`${this.apiAddress}Messages/GetDelivery`, {
+    const request = await fetch(`${this.apiAddress}Messages/GetMessage`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -107,12 +109,20 @@ export class Pishgam {
     return { statusCode: ApiStatusCode.Failed };
   }
 
+  /**
+   * از طریق این متد می توانید پیام صوتی با رمز یکبار مصرف را به صورت فوری به شماره(های) انتخابی خود ارسال نمایید
+   * و با شماره وارد شده تماس گرفته میشود و رمز یکبار مصرف را به شما اعلام میکند .
+   * اگر کد دلخواه  وارد شود کد کد دلخواه  خوانده می شود.
+   * ولی اگر کد دلخواه وارد نشود کد 5 رقمی تولید شده خوانده می شود .
+   * @param {SendVoiceOtpRequest} SendVoiceOtpRequest
+   * @param {AbortController} controller
+   */
   public static async sendVoiceOtpAsync(
-    {token , ...sendVoiceOtpRequest}: SendVoiceOtpRequest,
+    { token, ...sendVoiceOtpRequest }: SendVoiceOtpRequest,
     controller?: AbortController
-  ):Promise<SendVoiceOtpResponse> {
+  ): Promise<SendVoiceOtpResponse> {
     const body = sendVoiceOtpRequest;
-    const request = await fetch(`${this.apiAddress}Messages/GetDelivery`, {
+    const request = await fetch(`${this.apiAddress}Messages/SendVoiceOtp`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -124,8 +134,32 @@ export class Pishgam {
 
     if ((await request.text()) != null) return await request.json();
     return { statusCode: ApiStatusCode.Failed };
-
   }
 
+  /**
+   * میتوان به صورت byte صدای جدید آپلود کرد
+   * @param {UploadVoiceMessageRequest} UploadVoiceMessageRequest
+   * @param {AbortController} controller
+   */
+  public static async uploadVoiceMessageAsync(
+    { token, ...uploadVoiceMessageRequest }: UploadVoiceMessageRequest,
+    controller?: AbortController
+  ): Promise<UploadVoiceMessageResponse> {
+    const body = uploadVoiceMessageRequest;
+    const request = await fetch(
+      `${this.apiAddress}Messages/UploadVoiceMessage`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+        body: JSON.stringify(body),
+        signal: controller?.signal,
+      }
+    );
 
+    if ((await request.text()) != null) return await request.json();
+    return { statusCode: ApiStatusCode.Failed };
+  }
 }

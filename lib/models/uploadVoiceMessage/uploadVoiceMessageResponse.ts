@@ -4,13 +4,13 @@ export interface UploadVoiceMessageResponse {
   /**
    * وضعیت ارسال
    */
-  StatusCode: ApiStatusCode;
+  statusCode: ApiStatusCode;
   /**
    * شناسه ارسال
    */
-  MessageId: number;
+  messageId?: number;
   /**
    * کد خطاهای آپلود فایل صوتی جدید
    */
-  UploadVoiceErrors?: VoiceUploadErrors;
+  uploadVoiceErrors?: VoiceUploadErrors;
 }

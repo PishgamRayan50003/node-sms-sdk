@@ -2,25 +2,25 @@ export interface UploadVoiceMessageRequest {
     /**
      * توکن تایید شده
      */
-    Token: string;
+    token: string;
     /**
      * شماره فرستنده
      */
-    SenderNumber: string;
+    senderNumber: string;
     /**
      * عنوان
      */
-    Title: string;
+    title: string;
     /**
      * فایل به صورت بایت
      */
-    File: Uint8Array;
+    file: Uint8Array;
     /**
      * آیا ماندگار باشد؟
      */
-    IsPersist: boolean;
+    isPersist: boolean;
     /**
      * شماره همراه که در انتهای صوت اضافه میشود (پیش فرض خالی باشد)
      */
-    CallFromCellPhone: string;
+    callFromCellPhone: string;
 }
