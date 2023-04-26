@@ -1,0 +1,25 @@
+{
+  "name": "pishgam-rayan-node-example",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.0.1",
+    "@pishgamrayan/api": "file:../",
+    "antd": "^5.4.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^4.0.0-beta.0",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.0"
+  }
+}

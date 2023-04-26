@@ -1,4 +1,4 @@
-export const enum ApiStatusCode {
+export enum ApiStatusCode {
   Successful,
   SingleSent,
   P2PSent,

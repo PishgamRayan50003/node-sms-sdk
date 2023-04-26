@@ -6,7 +6,9 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc --declaration",
-    "build:watch": "tsc --declaration --watch"
+    "build:watch": "tsc --declaration --watch",
+    "preexample": "npm run build",
+    "example" :"npm run dev --prefix ./example"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",
