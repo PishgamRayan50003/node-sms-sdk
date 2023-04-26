@@ -12,6 +12,8 @@ import {
   SendVoiceOtpResponse,
   UploadVoiceMessageRequest,
   UploadVoiceMessageResponse,
+  GetVoiceStatusRequest,
+  GetVoiceStatusResponse,
 } from "./models";
 
 export class Pishgam {
@@ -158,6 +160,30 @@ export class Pishgam {
         signal: controller?.signal,
       }
     );
+
+    if ((await request.text()) != null) return await request.json();
+    return { statusCode: ApiStatusCode.Failed };
+  }
+
+  /**
+   * بررسی وضعیت فایل آپلود شده
+   * @param {GetUploadStatusRequest} GetUploadStatusRequest
+   * @param {AbortController} controller
+   */
+  public static async getVoiceStatus(
+    { token, ...getVoiceStatusRequest }: GetVoiceStatusRequest,
+    controller?: AbortController
+  ): Promise<GetVoiceStatusResponse> {
+    const body = getVoiceStatusRequest;
+    const request = await fetch(`${this.apiAddress}Messages/GetVoiceStatus`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+      body: JSON.stringify(body),
+      signal: controller?.signal,
+    });
 
     if ((await request.text()) != null) return await request.json();
     return { statusCode: ApiStatusCode.Failed };

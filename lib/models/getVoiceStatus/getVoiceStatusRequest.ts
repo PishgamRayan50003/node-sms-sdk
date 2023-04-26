@@ -2,13 +2,13 @@ export interface GetVoiceStatusRequest {
   /**
    * توکن تایید شده
    */
-  Token: string;
+  token: string;
   /**
    * شماره فرستنده
    */
-  SenderNumber: string;
+  senderNumber: string;
   /**
    * شناسه صوت
    */
-  MessageId: number;
+  messageId: number;
 }
