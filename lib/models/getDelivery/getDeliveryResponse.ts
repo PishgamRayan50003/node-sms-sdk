@@ -4,9 +4,9 @@ export interface GetDeliveryResponse {
   /**
    * کد وضعیت
    */
-  StatusCode: ApiStatusCode;
+  statusCode: ApiStatusCode;
   /**
    * آرایه ای از وضعیت دریافت
    */
-  DeliveryStatus: DeliveryStatus[];
+  deliveryStatus?: DeliveryStatus[];
 }

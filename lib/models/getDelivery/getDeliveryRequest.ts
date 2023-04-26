@@ -2,13 +2,13 @@ export interface GetDeliveryRequest {
   /**
    * توکن تایید شده
    */
-  Token: string;
+  token: string;
   /**
    * شناسه صف یا صندوق
    */
-  MessageId: number;
+  messageId: number;
   /**
    * آرایه ای ازرشته های گیرندگان حداکثر 100 عدد
    */
-  RecipientNumbers: string[];
+  recipientNumbers: string[];
 }
