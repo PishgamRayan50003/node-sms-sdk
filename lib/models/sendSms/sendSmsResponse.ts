@@ -4,7 +4,7 @@ export interface SendSmsResponse {
   /**
    * شناسه صف یا صندوق
    */
-  ئessageId?: number;
+  messageId?: number;
   /**
    * وضعیت ارسال
    */
